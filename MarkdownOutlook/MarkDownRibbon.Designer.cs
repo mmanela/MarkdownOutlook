@@ -57,6 +57,7 @@
             // enableMarkdownMode
             // 
             this.enableMarkdownMode.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.enableMarkdownMode.Image = global::MarkdownOutlook.Properties.Resources.markdown;
             this.enableMarkdownMode.Label = "Enable Markdown Mode";
             this.enableMarkdownMode.Name = "enableMarkdownMode";
             this.enableMarkdownMode.ShowImage = true;
