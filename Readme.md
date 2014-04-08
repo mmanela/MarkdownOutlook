@@ -6,3 +6,5 @@ A simple plugin for Outlook 2010 which adds a button to the compose mail menu to
 * Uses [MarkdownSharp](http://code.google.com/p/markdownsharp/) for the markdown conversion
 * Built using VSTO to integrate with Outlook
 
+
+## License: MIT
