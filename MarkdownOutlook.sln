@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{46B2D6
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MarkdownOutlookSetup", "MarkdownOutlookSetup\MarkdownOutlookSetup.vdproj", "{1BE3E826-AD7D-44ED-B7A8-CE2DC441FED2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,8 @@ Global
 		{BB10F8D0-255C-4F0E-9382-E571B0F8AAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB10F8D0-255C-4F0E-9382-E571B0F8AAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB10F8D0-255C-4F0E-9382-E571B0F8AAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE3E826-AD7D-44ED-B7A8-CE2DC441FED2}.Debug|Any CPU.ActiveCfg = Debug
+		{1BE3E826-AD7D-44ED-B7A8-CE2DC441FED2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
