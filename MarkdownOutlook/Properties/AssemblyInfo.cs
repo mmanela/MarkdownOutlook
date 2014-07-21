@@ -7,11 +7,11 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MarkdownOutlook")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Converts markdown in your emails into HTML")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Matthew Manela")]
 [assembly: AssemblyProduct("MarkdownOutlook")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("Copyright © Matthew Manela 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Security;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.*")]
