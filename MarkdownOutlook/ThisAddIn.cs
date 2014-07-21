@@ -14,19 +14,18 @@ namespace MarkdownOutlook
     {
         Outlook.Inspectors inspectors;
         Markdown markdownProvider = new Markdown();
-        private MarkdownRibbon markdownRibbon;
+        public static bool MarkdownEnabled { get; set; }
+
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-
-            markdownRibbon = Globals.Ribbons.GetRibbon<MarkdownRibbon>();
             inspectors = this.Application.Inspectors;
             this.Application.ItemSend += Application_ItemSend;
         }
 
         void Application_ItemSend(object Item, ref bool Cancel)
         {
-            if (markdownRibbon.MarkdownEnabled)
+            if (MarkdownEnabled)
             {
                 var mailItem = Item as MailItem;
                 mailItem.HTMLBody = markdownProvider.Transform(mailItem.Body);
