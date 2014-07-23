@@ -37,6 +37,7 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.markdownGroup = this.Factory.CreateRibbonGroup();
             this.enableMarkdownMode = this.Factory.CreateRibbonToggleButton();
+            this.renderMarkdown = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.markdownGroup.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // markdownGroup
             // 
             this.markdownGroup.Items.Add(this.enableMarkdownMode);
+            this.markdownGroup.Items.Add(this.renderMarkdown);
             this.markdownGroup.Label = "Markdown";
             this.markdownGroup.Name = "markdownGroup";
             // 
@@ -62,6 +64,14 @@
             this.enableMarkdownMode.Name = "enableMarkdownMode";
             this.enableMarkdownMode.ShowImage = true;
             this.enableMarkdownMode.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.enableMarkdownMode_Click);
+            // 
+            // renderMarkdown
+            // 
+            this.renderMarkdown.Image = global::MarkdownOutlook.Properties.Resources.markdown;
+            this.renderMarkdown.Label = "Show Preview";
+            this.renderMarkdown.Name = "renderMarkdown";
+            this.renderMarkdown.ShowImage = true;
+            this.renderMarkdown.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.renderMarkdown_Click);
             // 
             // MarkdownRibbon
             // 
@@ -81,6 +91,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup markdownGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton enableMarkdownMode;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton renderMarkdown;
     }
 
     partial class ThisRibbonCollection

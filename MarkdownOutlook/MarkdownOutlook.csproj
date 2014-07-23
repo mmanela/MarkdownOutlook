@@ -220,9 +220,17 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RenderedMarkdownForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenderedMarkdownForm.Designer.cs">
+      <DependentUpon>RenderedMarkdownForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -235,6 +243,9 @@
     </Compile>
     <EmbeddedResource Include="MarkDownRibbon.resx">
       <DependentUpon>MarkDownRibbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenderedMarkdownForm.resx">
+      <DependentUpon>RenderedMarkdownForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Markdown_TemporaryKey.pfx" />
     <None Include="packages.config" />

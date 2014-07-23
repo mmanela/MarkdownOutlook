@@ -12,23 +12,26 @@ namespace MarkdownOutlook
 {
     public partial class ThisAddIn
     {
-        Outlook.Inspectors inspectors;
-        Markdown markdownProvider = new Markdown();
-        public static bool MarkdownEnabled { get; set; }
+        static readonly Markdown markdownProvider = new Markdown();
 
+        public static bool CachedMarkdownEnabled { get; set; }
 
+        public static string RenderMarkdown(string text)
+        {
+           return markdownProvider.Transform(text);
+        }
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            inspectors = this.Application.Inspectors;
             this.Application.ItemSend += Application_ItemSend;
         }
 
         void Application_ItemSend(object Item, ref bool Cancel)
         {
-            if (MarkdownEnabled)
+            var mailItem = Item as MailItem;
+            var useMarkdown = Utility.GetUserProperty<bool>(mailItem, Constants.EnableMarkdownModeFlag);
+            if (useMarkdown)
             {
-                var mailItem = Item as MailItem;
-                mailItem.HTMLBody = markdownProvider.Transform(mailItem.Body);
+                mailItem.HTMLBody = RenderMarkdown(mailItem.Body);
             }
         }
 
@@ -47,7 +50,7 @@ namespace MarkdownOutlook
             this.Startup += new System.EventHandler(ThisAddIn_Startup);
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
         }
-        
+
         #endregion
     }
 }
