@@ -2,7 +2,7 @@
 
 A simple plugin for Outlook 2013 which adds a button to the compose mail menu to enable Markdown mode. When enabled your email will be turned from Markdown syntax to html when sending.
 
-![](http://matthewmanela.com/images/markdownoutlook2.png)
+![](http://matthewmanela.com/images/markdownoutlook3.png)
 
 * Uses [MarkdownSharp](http://code.google.com/p/markdownsharp/) for the markdown conversion
 * Uses VSTO to integrate with Outlook
