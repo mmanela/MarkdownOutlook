@@ -6,19 +6,17 @@ using System.Xml.Linq;
 using Microsoft.Office.Interop.Outlook;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
-using MarkdownSharp;
+using Markdig;
 
 namespace MarkdownOutlook
 {
     public partial class ThisAddIn
     {
-        static readonly Markdown markdownProvider = new Markdown();
-
         public static bool CachedMarkdownEnabled { get; set; }
 
         public static string RenderMarkdown(string text)
         {
-           return markdownProvider.Transform(text);
+           return Markdown.ToHtml(text);
         }
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
