@@ -7,19 +7,27 @@ using Microsoft.Office.Interop.Outlook;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 using Markdig;
+using Markdig.SyntaxHighlighting;
 
 namespace MarkdownOutlook
 {
     public partial class ThisAddIn
     {
+        private static MarkdownPipeline pipeline;
+
         public static bool CachedMarkdownEnabled { get; set; }
 
         public static string RenderMarkdown(string text)
         {
-           return Markdown.ToHtml(text);
+           return Markdown.ToHtml(text, pipeline);
         }
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .UseSyntaxHighlighting()
+                .Build();
             this.Application.ItemSend += Application_ItemSend;
         }
 
