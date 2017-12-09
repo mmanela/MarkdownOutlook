@@ -83,7 +83,6 @@
             this.tab1.PerformLayout();
             this.markdownGroup.ResumeLayout(false);
             this.markdownGroup.PerformLayout();
-
         }
 
         #endregion

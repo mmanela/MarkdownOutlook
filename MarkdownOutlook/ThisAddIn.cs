@@ -2,42 +2,79 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using Microsoft.Office.Interop.Outlook;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 using Markdig;
 using Markdig.SyntaxHighlighting;
+using Microsoft.Office.Tools.Ribbon;
 
 namespace MarkdownOutlook
 {
     public partial class ThisAddIn
     {
-        private static MarkdownPipeline pipeline;
+        private static MarkdownPipeline _pipeline;
 
         public static bool CachedMarkdownEnabled { get; set; }
 
         public static string RenderMarkdown(string text)
         {
-           return Markdown.ToHtml(text, pipeline);
+           return Markdown.ToHtml(text, _pipeline);
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            pipeline = new MarkdownPipelineBuilder()
+            _pipeline = new MarkdownPipelineBuilder()
                 .UseAdvancedExtensions()
                 .UseSyntaxHighlighting()
                 .Build();
             this.Application.ItemSend += Application_ItemSend;
         }
 
-        void Application_ItemSend(object Item, ref bool Cancel)
+        protected override IRibbonExtension[] CreateRibbonObjects()
         {
-            var mailItem = Item as MailItem;
-            var useMarkdown = Utility.GetUserProperty<bool>(mailItem, Constants.EnableMarkdownModeFlag);
-            if (useMarkdown)
+            var allRibbons =
+                new IRibbonExtension[2];
+            allRibbons[0] = new MarkdownRibbon();
+            allRibbons[1] = new AppointmentRibbon();
+            return allRibbons;
+        }
+
+        void Application_ItemSend(object item, ref bool cancel)
+        {
+            var useMarkdown = false;
+            var mailItem = item as MailItem;
+            var meetingItem= item as MeetingItem;
+
+            if (mailItem != null)
             {
-                mailItem.HTMLBody = RenderMarkdown(mailItem.Body);
+                useMarkdown = Utility.GetUserProperty<bool>(mailItem, Constants.EnableMarkdownModeFlag);
+                if (useMarkdown)
+                {
+                    mailItem.HTMLBody = RenderMarkdown(mailItem.Body);
+                }
+            } else if (meetingItem != null)
+            {
+                useMarkdown = Utility.GetUserProperty<bool>(meetingItem, Constants.EnableMarkdownModeFlag);
+                if (useMarkdown)
+                {
+                    // Use web browser to convert HTML to RTF
+                    var webBrowser = new WebBrowser();
+                    var htmlText = RenderMarkdown(meetingItem.Body);
+                    webBrowser.DocumentText = htmlText;
+                    while (webBrowser.DocumentText != htmlText)
+                        System.Windows.Forms.Application.DoEvents();
+                    if (webBrowser.Document != null)
+                    {
+                        webBrowser.Document.ExecCommand("SelectAll", false, null);
+                        webBrowser.Document.ExecCommand("Copy", false, null);
+                    }
+
+                    // Todo: Somehow convert HTML to RTF and store it in RTFBody
+                    ////meetingItem.RTFBody = Clipboard.GetData().ToByt;
+                }
             }
         }
 
