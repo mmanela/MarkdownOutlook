@@ -14,7 +14,7 @@ namespace MarkdownOutlook
 
         private void AppointmentRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            enableMarkdownMode.Checked = ThisAddIn.CachedMarkdownEnabled;
+            enableMarkdownMode.Checked = false;
             _markdownForm = new RenderedMarkdownForm();
         }
 

@@ -63,6 +63,7 @@ namespace MarkdownOutlook
                     // Use web browser to convert HTML to RTF
                     var webBrowser = new WebBrowser();
                     var htmlText = RenderMarkdown(meetingItem.Body);
+                    webBrowser.CreateControl();
                     webBrowser.DocumentText = htmlText;
                     while (webBrowser.DocumentText != htmlText)
                         System.Windows.Forms.Application.DoEvents();
@@ -71,9 +72,11 @@ namespace MarkdownOutlook
                         webBrowser.Document.ExecCommand("SelectAll", false, null);
                         webBrowser.Document.ExecCommand("Copy", false, null);
                     }
+                    var i = new RichTextBox();
+                    i.Paste();
 
-                    // Todo: Somehow convert HTML to RTF and store it in RTFBody
-                    ////meetingItem.RTFBody = Clipboard.GetData().ToByt;
+                    meetingItem.RTFBody = Encoding.ASCII.GetBytes(i.Rtf);
+                    webBrowser.Dispose();
                 }
             }
         }
