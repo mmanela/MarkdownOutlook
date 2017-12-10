@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Office.Interop.Outlook;
 
 namespace MarkdownOutlook
@@ -9,6 +6,7 @@ namespace MarkdownOutlook
     public static class Utility
     {
         #region SetUserProperty
+
         public static void SetUserProperty<T>(MailItem currentMailItem, string propName, T propValue)
         {
             if (currentMailItem == null)

@@ -235,10 +235,10 @@
   -->
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="AppointmentRibbon.cs">
+    <Compile Include="Ribbons\AppointmentRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AppointmentRibbon.Designer.cs">
+    <Compile Include="Ribbons\AppointmentRibbon.Designer.cs">
       <DependentUpon>AppointmentRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -251,7 +251,7 @@
       <DependentUpon>RenderedMarkdownForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
-    <EmbeddedResource Include="AppointmentRibbon.resx">
+    <EmbeddedResource Include="Ribbons\AppointmentRibbon.resx">
       <DependentUpon>AppointmentRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -264,7 +264,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="MarkDownRibbon.resx">
+    <EmbeddedResource Include="Ribbons\MarkDownRibbon.resx">
       <DependentUpon>MarkDownRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RenderedMarkdownForm.resx">
@@ -283,10 +283,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="MarkDownRibbon.cs">
+    <Compile Include="Ribbons\MarkDownRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MarkDownRibbon.Designer.cs">
+    <Compile Include="Ribbons\MarkDownRibbon.Designer.cs">
       <DependentUpon>MarkDownRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="ThisAddIn.cs">
