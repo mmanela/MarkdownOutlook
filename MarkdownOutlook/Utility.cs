@@ -5,8 +5,6 @@ namespace MarkdownOutlook
 {
     public static class Utility
     {
-        #region SetUserProperty
-
         public static void SetUserProperty<T>(MailItem currentMailItem, string propName, T propValue)
         {
             if (currentMailItem == null)
@@ -45,9 +43,6 @@ namespace MarkdownOutlook
             }
         }
 
-        #endregion
-
-        #region GetUserProperty
 
         public static T GetUserProperty<T>(MailItem currentMailItem, string propName)
         {
@@ -99,8 +94,5 @@ namespace MarkdownOutlook
 
             return default(T);
         }
-
-        #endregion
-
     }
 }
